@@ -20,22 +20,7 @@ export class RecomendationsComponent {
     private recomendation: RecomendationService) { }
     
     ngOnInit(): void {
-      if (this.user.recomendations == undefined || this.user.recomendations.length === 0) {
-        this.recomendation.getEditalByUserAfinity({
-          input_text: this.user.user.segment.name,
-          n_recommendations: 3
-        }).subscribe(data => {
-          this.editais = data.map(edital => {
-            let list = edital.ds_areas.split(";");
-            edital.ds_areas = list.length > 1 ? list.slice(0, 1) : list;
-            return edital;
-          });
-          this.user.recomendations = this.editais;
-        })
-      } else {
-        this.editais = this.user.recomendations;
-      }
-  
+      
     }
 
     reduceTitle(title) {

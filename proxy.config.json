@@ -4,5 +4,11 @@
         "pathRewrite": { "^/recomendationApiUrl": "" },
         "secure": false,
         "changeOrigin": true
+    },
+    "/urlLocal": {
+        "target": "http://localhost:3000",
+        "pathRewrite": { "^/urlLocal": "" },
+        "secure": false,
+        "changeOrigin": true
     }
 }

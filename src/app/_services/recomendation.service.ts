@@ -12,6 +12,6 @@ export class RecomendationService {
   constructor(private http: HttpClient) { }
 
   getEditalByUserAfinity(userAfinity: any) : Observable<any> {
-    return this.http.post(`${environment.recomendationApiUrl}/captia/recomendation`, userAfinity);
+    return this.http.post(`${environment.recomendationApiUrl}`, userAfinity);
   }
 }

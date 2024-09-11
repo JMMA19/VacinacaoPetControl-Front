@@ -1,7 +1,7 @@
 export const environment = {
     production: false,
-    apiUrl: 'https://vacPet-api.onrender.com',
-    recomendationApiUrl: 'https://capti-ia.onrender.com',
-    mercadoPagoKey: 'APP_USR-c07e7870-3c00-49cc-a913-9d2f5b7dfa92'
+    apiUrl: '/urlLocal',
+    recomendationApiUrl: '',
+    mercadoPagoKey: ''
   };
   
