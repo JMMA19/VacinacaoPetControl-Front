@@ -1,0 +1,254 @@
+<div class="wrapper">
+    <div class="title">
+        <span *ngIf="!isAdmVision">
+            Seu perfil
+        </span>
+        <div *ngIf="isAdmVision">
+            <span class="dds__icons dds__chevron-left" (click)="router.navigate(['/list-users'])"></span>
+            <span>
+                Detalhes do cliente
+            </span>
+        </div>
+        <label *ngIf="!isAdmVision">
+            Veja e alter suas informações
+        </label>
+    </div>
+    <div class="tabs row">
+        <div class="informations col-3" (click)="setTab(tabOptions.PROFILE)"
+            [ngClass]="{'tab-selected': currentTab === tabOptions.PROFILE}">
+            <label>
+                Informações do perfil
+            </label>
+        </div>
+        <div class="service col-1"></div>
+        <div class="service col-3" (click)="setTab(tabOptions.SERVICE)"
+            [ngClass]="{'tab-selected': currentTab === tabOptions.SERVICE}">
+            <label>
+                Informações do seu serviço
+            </label>
+        </div>
+        <div class="service col-5"></div>
+    </div>
+    <div class="container">
+        <div class="wrapper row">
+            <div class="left-side col-4">
+                <div class="divisor">
+                    <div class="user-space">
+                        <div class="user-labels">
+                            <span class="profile-label"> Perfil </span>
+                            <div class="user-img">
+                                <div class="user-img-wrapper">
+                                    <div class="material-symbols-outlined" *ngIf="!isAdmVision && editMode" 
+                                    (click)="uploadProfileImage()"> 
+                                        edit 
+                                    </div>
+                                    <img id="usar-image" [src]="userProfile">
+                                    <div style="display: none;" class="fileUploadArea">
+                                        <input type="file" name="profileImagemUpload" id="profileImagemUpload"
+                                            accept=".jpeg,.jpg,.png,.gif,.webm"
+                                            (change)="onFileSelected($event)">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="profile-name-function">
+                                <label>
+                                    {{isAdmVision ? userForm.controls['name'].value : user.user.name}} 
+                                    {{isAdmVision ? userForm.controls['lastName'].value : user.user.lastName}}
+                                </label>
+                                <span> 
+                                    {{isAdmVision ? userForm.controls['role'].value?.name : user.user.role}} 
+                                </span>
+                            </div>
+                            <span class="localization-label">localização, placeholder</span>
+                        </div>
+                    </div>
+                </div>
+              <!--   <button type="button" class="logout" (click)="logout()" *ngIf="!isAdmVision">
+                    <span> Deslogar da sua conta </span>
+                </button> -->
+            </div>
+            <div class="right-side col-8">
+                <div class="row buttons-row">
+                    <button type="button" class="col-3 edit" (click)="edit()" *ngIf="!editMode">
+                        <span class="material-symbols-outlined">
+                            edit
+                        </span>
+                        <span> Editar </span>
+                    </button>
+                </div>
+                <form [formGroup]="userForm" (submit)="save()" *ngIf="currentTab === tabOptions.PROFILE">
+                    <div class="">
+                        <div class="form-group row">
+                            <div class="form-group col-8">
+                                <label>Nome</label>
+                                <input type="text" class="form-control" formControlName = "name" name="username">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="form-group col-8">
+                                <label>Sobrenome</label>
+                                <input type="text" class="form-control" formControlName = "lastName" name="lastName">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="form-group col-8">
+                                <label>CPF/CNPJ</label>
+                                <input type="text" [mask]="mask" class="form-control" formControlName = "cpfCnpj" name="cpfCnpj"
+                                [ngClass]="{'invalid-field': !userForm.get('cpfCnpj').valid && showErrors}">
+                                <div class="invalid-message" *ngIf="!userForm.get('cpfCnpj').valid && showErrors">
+                                    <span>Preenchimento obrigatório</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="form-group col-8">
+                                <label>Email</label>
+                                <input type="text" class="form-control" formControlName = "email" name="email"
+                                [ngClass]="{'invalid-field': userForm.get('email').invalid && showErrors}">
+                                <div class="invalid-message" *ngIf="userForm.get('email').value == '' && showErrors">
+                                    <span>Preenchimento obrigatório</span>
+                                </div>
+                                <div class="invalid-message" *ngIf="!userForm.get('email').valid && userForm.get('email').value != '' && showErrors">
+                                    <span>Informação não é válida</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="col-3 edit password" (click)="ededitPassword()" *ngIf="editMode && !passwordEdit && !isAdmVision">
+                            <span class="material-symbols-outlined">
+                                lock_reset
+                            </span>
+                            <span> Alterar senha </span>
+                        </button>
+                        <form [formGroup]="passwordForm" *ngIf="passwordEdit">
+                                <div class="form-group row">
+                                    <div class="form-group col-4">
+                                        <label>Nova senha</label>
+                                        <div class="password-fields">
+                                            <input class="form-control" [type]="passwordFieldVisible ? 'text' : 'password'" 
+                                            formControlName="password"
+                                            [ngClass]="{'invalid-field': passwordForm.get('passwordConfirm').valid && 
+                                            passwordForm.get('passwordConfirm').touched && 
+                                            passwordForm.get('passwordConfirm').value != passwordForm.get('password').value && 
+                                            passwordForm.get('password').value != ''}">
+                                                <span class="dds__icons" [ngClass]="{
+                                                    'dds__eye-view-on': passwordFieldVisible, 
+                                                    'dds__eye-view-off': !passwordFieldVisible
+                                                }" (click)="toglePasswordField()"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-4">
+                                        <label>Redigite sua nova senha</label>
+                                        <div class="password-fields">
+                                            <input class="form-control" [type]="passwordConfirmationFieldVisible ? 'text' : 'password'" 
+                                            formControlName="passwordConfirm"
+                                            [ngClass]="{'invalid-field': passwordForm.get('passwordConfirm').valid && 
+                                            passwordForm.get('passwordConfirm').touched && 
+                                            passwordForm.get('passwordConfirm').value != passwordForm.get('password').value && 
+                                            passwordForm.get('password').value != ''}">
+                                                <span class="dds__icons" [ngClass]="{
+                                                    'dds__eye-view-on': passwordConfirmationFieldVisible, 
+                                                    'dds__eye-view-off': !passwordConfirmationFieldVisible
+                                                }" (click)="toglePasswordConfirmField()"></span>
+                                        </div>
+                                        <div class="invalid-message" *ngIf="
+                                        passwordForm.get('passwordConfirm')?.value != passwordForm.get('password')?.value && passwordForm.get('password').valid">
+                                            <span>Este campo deve ser igual ao campo senha!</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="!passwordForm.get('password').valid">
+                                    <label class="password-errors-label">Sua senha deve conter</label>
+                                    <div class="password-errors">
+                                        <div class="errors" *ngIf="!passwordForm.get('password').hasError('minLength')">
+                                            <span class="dot">
+                                            </span>
+                                            <label>Mais de 8 caracteres</label>
+                                        </div>
+                                        <div class="errors" *ngIf="!passwordForm.get('password').hasError('hasUpperCase')">
+                                            <span class="dot">
+                                            </span>
+                                            <label>Uma letra maiúscula </label>
+                                        </div>
+                                        <div class="errors" *ngIf="!passwordForm.get('password').hasError('hasNumeric')">
+                                            <span class="dot">
+                                            </span>
+                                            <label>Um número</label>
+                                        </div>
+                                        <div class="errors" *ngIf="!passwordForm.get('password').hasError('specialCharacters')">
+                                            <span class="dot">
+                                            </span>
+                                            <label>Um caractere especial</label>
+                                        </div>
+                                    </div>
+                                </div>  
+                            
+                        </form>
+                    </div>
+                </form>
+                <form [formGroup]="userForm" (submit)="save()" *ngIf="currentTab === tabOptions.SERVICE">
+                    <div class="">
+                        <div class="form-group row">
+                            <div class="form-group col-8">
+                                <label>Selecione um segmento</label>
+                                <ng-select 
+                                    [items]="segments"
+                                    bindLabel="name"
+                                    [searchable]="true"
+                                    [clearable]="false"
+                                    [multiple]="false"
+                                    formControlName="segment"
+                                    [ngClass]="{'invalid-field': !userForm.get('segment').valid && showErrors}">
+                                </ng-select>
+                                <div class="invalid-message" *ngIf="userForm.get('segment').value == '' && showErrors">
+                                    <span>Preenchimento obrigatório</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="form-group col-8">
+                                <label>Selecione as atividades</label>
+                                <ng-select 
+                                    [items]="activities"
+                                    bindLabel="name"
+                                    [searchable]="true"
+                                    [clearable]="true"
+                                    [multiple]="true"
+                                    formControlName="activite"
+                                    [ngClass]="{'invalid-field': !userForm.get('activite').valid && showErrors}">
+                                </ng-select>
+                                <div class="invalid-message" *ngIf="userForm.get('activite').value == '' && showErrors">
+                                    <span>Preenchimento obrigatório</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="form-group col-8">
+                                <label>Escolha a abrangencia territorial</label>
+                                <ng-select 
+                                    [items]="states"
+                                    bindLabel="name"
+                                    [searchable]="true"
+                                    [clearable]="true"
+                                    [multiple]="true"
+                                    formControlName="abrangency"
+                                    [ngClass]="{'invalid-field': !userForm.get('abrangency').valid && showErrors}">
+                                </ng-select>
+                                <div class="invalid-message" *ngIf="userForm.get('abrangency').value == '' && showErrors">
+                                    <span>Preenchimento obrigatório</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="buttons-wrapper">
+                    <button type="button" class="col-3 btn-cancel" (click)="cancel()" *ngIf="editMode">
+                        <span> Cancelar </span>
+                    </button>
+                    <button type="button" class="col-3 save" (click)="save()" *ngIf="editMode">
+                        <span> Salvar alterações </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

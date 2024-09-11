@@ -1,0 +1,259 @@
+.title{
+  .dds__chevron-left {
+    color: #3891e0;
+    font-size: 1.5rem !important;
+    padding-right: 1%;
+}
+  div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+  }
+  span {
+      font-size: 2rem;
+      font-weight: bold;
+  }
+  label {
+      color: #929292;
+      padding: 1% 0%;
+  }
+  display: flex;
+  
+  flex-direction: column;
+}
+.container {
+  padding: 2% 1% 2% !important;
+  height: 72%;
+}
+.wrapper {
+  min-height: 100%;
+}
+.divisor { 
+  border-right: 3px solid #e6e6e6;
+  height: 90%;
+  margin-top: 3%;
+}
+
+.user-img-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .material-symbols-outlined {
+    cursor: pointer;
+    user-select: none;
+    position: absolute;
+    font-size: 7rem;
+    color: #fafdff;
+  }
+  
+}
+
+.user-space {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 40%;
+  min-width: 90%; 
+  padding-top: 3%;
+  .user-img {
+      img {
+          border-radius: 50%;
+          margin: 10% 0% 10% 0%;
+          max-height: 150px;
+      }
+  }
+  .user-labels {
+      align-items: center;
+      padding: 3%;
+      display: flex;
+      flex-direction: column;
+      label {
+          font-weight: bold;
+          font-size: 1.5rem;
+      }
+
+    span {
+      color: #757574;
+    }
+  }
+}
+.form-group {
+  color: #000;
+  margin-bottom: 8px !important;
+  label {
+      font-size: 1rem;
+      font-weight: 500;
+      font-size: 0.9rem;
+  }
+}
+
+.password-errors-label{
+  font-weight: bold;
+}
+.password-errors {
+  .dds__icons {
+    color: #000000;
+  }
+}
+.dot {
+  background: #989898;
+  width: 3px;
+  border-radius: 19px;
+  height: 3px;
+}
+
+.errors {
+  label{
+    margin-left: 6px;
+    color: #989898;
+  }
+  display: flex;
+  align-items: center;
+  padding: 0px;
+}
+
+
+.invalid-field {
+  border: 2px solid #ff0000 !important;
+}
+.invalid-message {
+  color: #ff0000;
+}
+.invalid-message {
+  display: flex;
+  color: #ff0000;
+}
+.form-control {
+  background-color: #fafdff;
+  border: 1px solid #9f9f9f;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.left-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-content: space-between;
+}
+
+.right-side {
+  max-width: 60%;
+  margin-left: 3%;
+  form {
+    height: 85%;
+  }
+}
+.logout {
+  background: none;
+  border: 1px solid #ff651e;
+  color: #ff651e;
+  border-radius: 5px;
+  margin: 0% 20%;
+}
+
+.edit {
+  background: #e4531e;
+  border: none;
+  color: #ffffff;
+  border-radius: 5px;
+  display: flex;
+  padding: 1%;
+  max-width: 6rem;
+  justify-content: center;
+}
+
+.password {
+  max-width: 10rem !important;
+  margin-top: 3rem;
+  .material-symbols-outlined {
+    margin: 0px 10px 0px 0px;
+  }
+}
+
+.buttons-wrapper {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+.btn-cancel {
+  color: #ff7e64;
+  border: solid 2px #ff7e64;
+  border-radius: 6px !important;
+  background-color: #ffffff;
+  min-height: 40px;
+  align-items: center;
+  display: flex;
+  padding: 1%;
+  max-width: 10rem;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.save {
+  background: #308c47;
+  border: none;
+  border: solid 2px #308c47;
+  color: #ffffff;
+  border-radius: 5px;
+  display: flex;
+  padding: 1%;
+  max-width: 10rem;
+  justify-content: center;
+}
+
+.password-fields{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  span {
+    position: absolute;
+    padding-right: 1.2%;
+  }
+}
+
+.buttons-row {
+  display: flex;
+  min-height: 30px;
+  justify-content: flex-end;
+}
+
+.tabs{
+  padding: 0% 1%;
+  margin: 0% 0% 1% 0%;
+  font-size: 1.4rem;
+  color: #6c6c6c;
+  label {
+    cursor: pointer;
+  }
+  div {
+    border-bottom: 3px solid #e6e6e6;
+    padding-bottom: 5px;
+  }
+}
+.profile-label {
+  margin-bottom: 5%;
+  font-size: 1.7rem;
+}
+
+.tab-selected {
+  color: #e4531e;
+  border-bottom: 3px solid #e4531e !important;
+}
+
+.profile-name-function {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10%;
+  font-size: 1.5rem;
+}   
+.localization-label {
+  font-size: 1.5rem;
+}
+
+.ng-select .ng-select-container {
+  border: 1px solid #9f9f9f !important;
+  height: 40px !important;
+  border-radius: 8px !important;
+}

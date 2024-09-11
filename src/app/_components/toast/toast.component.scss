@@ -1,0 +1,72 @@
+.internal-toast {
+  margin-left: -2.5%;
+}
+.alertConfirmBar {
+  top: 1px;
+  z-index: 9999;
+  position: absolute;
+  min-width: 100%;
+  span {
+    margin: 0px 6px;
+  }
+  .alert {
+    color: #be3f3f;
+    padding: 0.5rem 1.25rem;
+    border: none;
+    border-radius: 0px;
+  }
+}
+
+.icon {
+  font-size: 25px;
+  margin-top: 5px;
+  color: #be3f3f;
+}
+
+.fadeIn {
+  animation: fadeIn 1s;
+}
+
+.fadeOut {
+  animation: fadeOut 1s;
+}
+
+// Animations
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@include keyframes(fadeIn) {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+
+}
+
+@include keyframes(fadeOut) {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}

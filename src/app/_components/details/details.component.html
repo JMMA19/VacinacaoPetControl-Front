@@ -1,0 +1,96 @@
+<app-loader></app-loader>
+<div class="wrapper">
+  <app-breadcrumb [pages]="breadcrumbPages"></app-breadcrumb>
+  <div class="title">
+    <span class="dds__icons dds__chevron-left" (click)="router.navigate(['/search'])"></span>
+    <span>
+      Detalhes do edital
+    </span>
+  </div>
+  <div class="container">
+    <div class="scroller" *ngIf="edital">
+      <div class="data-wrapper">  
+        <div class="header">
+          <div class="buttons">
+              <a [href]="edital.link" target="_blank">
+                <button class="linkButton">
+                  <div>
+                    <span class="icons_google material-symbols-outlined">
+                      link
+                    </span>
+                    <label>
+                      Acesse o edital
+                    </label>
+                  </div>
+                </button>
+              </a>
+              <button>
+                <div>
+                  <span class="icons_google material-symbols-outlined">
+                    bookmark
+                  </span>
+                  <label>
+                    Salvar
+                  </label>
+                </div>
+              </button>
+              <button>
+                <div>
+                  <span class="icons_google material-symbols-outlined">
+                    thumb_down
+                  </span>
+                  <label>
+                    Descartar
+                  </label>
+                </div>
+              </button>
+              <button>
+                <div>
+                  <span class="icons_google material-symbols-outlined">
+                    share 
+                  </span>
+                  <label>
+                    Compartilhar
+                  </label>
+                </div>
+              </button>
+          </div>
+          <div class="sub-header">
+            <div>
+              <span class="name">{{ edital.title }}</span>
+            </div>
+            <span class="offeredBy">Oferecido por: {{ edital.agency }}</span>
+          </div>
+        </div>
+        <div class="body">
+          <label class="subTitle" *ngIf="!edital.subTitle">{{ edital.subTitle }}</label>
+          <span>
+            Objetivo:
+          </span>
+          <label>{{ edital.objective }}</label>
+          <span>
+            Data de entrega das propostas:
+          </span>
+          <label>{{edital.submission}}</label>
+          <span>
+          Tematicas: 
+          </span>
+          <div class="tematics">
+              <label *ngFor="let t of edital.areaList" >{{ t }}</label>
+          </div>
+          <span>
+            Valor: 
+          </span>
+          <label>{{edital.financingValue}}</label>
+          <span>
+            Maturidade tecnológica (TRL): 
+          </span>
+          <label>{{ edital.maturityLevel ?? 'Não encontrado' }}</label>
+          <span>
+            Elegibilidade: 
+          </span>
+          <label>{{ edital.elegibility }}</label>
+      </div>
+    </div>
+  </div> 
+</div>

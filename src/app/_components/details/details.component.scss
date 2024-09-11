@@ -1,0 +1,121 @@
+.container {
+    padding: 30px 28px 31px!important;
+}
+.dds__chevron-left {
+    color: #3891e0;
+    font-size: 1.5rem !important;
+    padding-right: 1%;
+}
+.title{
+    span {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+    label {
+        color: #929292;
+        padding: 1% 0%;
+    }
+    display: flex;
+    align-items: center;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    .sub-header {
+        min-width: 50%;
+        max-width: 80%;
+        margin-bottom: 1%;
+    }
+    span {
+        color: #414141;
+        font-size: 0.8rem;
+        
+    }
+    .name {
+        color: #e4531e;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    .offeredBy{
+        font-weight: bold;
+        font-size: 1.3rem;
+    }
+    button {
+        cursor: not-allowed;
+        border: 1px solid #242424dd;
+        color: #242424dd;
+        border-radius: 4px;
+        background: none;
+        margin-right: 20px;
+        label {
+            cursor: not-allowed;
+        }
+        div {
+            display: flex;
+            align-items: center;
+            padding: 5px;
+        }
+    }
+
+    .linkButton {
+        cursor: pointer;
+        border: 1px solid #0095ffdd;
+        color: #0095ffdd;
+        margin-left: 0px;
+        label {
+            cursor: pointer;
+        }
+        .icons_google {
+            color: #0095ffdd;
+        }
+    }
+
+    .icons_google {
+        font-size: 26px;
+        margin-right: 6px;
+    }
+}
+
+.buttons {
+    margin-bottom: 1rem;
+}
+
+
+
+.scroller {
+    max-height: 95%;
+    overflow-y: auto;
+    position: absolute;
+    padding: 2%;
+}
+.body {
+    display: flex;
+    flex-direction: column;
+    .subTitle {
+        color: #e4531e;
+        font-size: 0.9rem;
+        font-weight: bold;
+    }
+    span {
+        color: #e4531e;
+        margin-top: 1%;
+        font-weight: bold;
+    }
+    label {
+        font-size: 0.9rem;
+    }
+}
+
+.tematics {
+    label {
+        color: #fff;
+        background-color: #3e82bd;
+        border-radius: 20px;
+        margin: 1%;
+        padding: 4px 20px;
+    }
+}
+.data-wrapper {
+    padding: 1%;
+}
