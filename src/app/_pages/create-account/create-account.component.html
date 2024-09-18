@@ -35,7 +35,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="toggle-container">
+                        <!-- <div class="toggle-container">
                             <div>
                                 <span (click)="togleCpfCnpj(true)" class="cpf-side"
                                     [ngClass]="{'toggle-selected': cpfInput}">
@@ -64,7 +64,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
@@ -122,7 +122,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col">
+                           <!--  <div class="col">
                                 <div class="form-group">
                                     <label>Sua formação profissional</label>
                                     <input type="text" class="form-control"
@@ -132,7 +132,7 @@
                                         *ngIf="userForm.get('background').value == '' && showErrors">
                                         <span>Preenchimento obrigatório</span>
                                     </div>
-                                    <!-- 
+                                    
                                     <div class="invalid-message"
                                         *ngIf="userForm.get('emailConfirmation').value != userForm.get('email').value && userForm.get('email').valid && userForm.get('emailConfirmation').valid">
                                         <span>Os e-mails não conferem</span>
@@ -140,9 +140,9 @@
                                     <div class="invalid-message"
                                         *ngIf="!userForm.get('emailConfirmation').valid && userForm.get('emailConfirmation').value != ''">
                                         <span>Informação não é válida</span>
-                                    </div> -->
+                                    </div> 
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="col-6 second-column">
@@ -235,8 +235,8 @@
                                     <span>Cancelar</span>
                                 </a>
                                 &nbsp;
-                                <button class="btn-advance">
-                                    <span>Próximo</span>
+                                <button class="btn-advance" (click)="saveUserData()">
+                                    <span>Salvar</span>
                                 </button>
                                 <!-- &nbsp;
                                 <button type="button" class="btn btn-info" style="margin-top: 0.5rem;"

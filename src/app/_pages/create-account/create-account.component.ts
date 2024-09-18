@@ -87,11 +87,9 @@ export class CreateAccountComponent implements OnInit {
       lastName: ['', Validators.required],
       email: [null, [Validators.required, emailValidator()], [EmailAvailabilityValidator.checkEmail(this.userService)]],
       emailConfirmation: ['', [Validators.required, emailValidator()]],
-      cpf_cnpj: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(14)], [CpfCnpjAvailabilityValidator.checkCpfCnpj(this.userService)]],
       password: ['', [Validators.required, createPasswordStrengthValidator()]],
       passwordConfirm: ['', Validators.required],
-      state: [null, Validators.required],
-      background: [null, Validators.required],
+      state: [null, Validators.required]
     });
 
     this.serviceForm = this.formBuilder.group({
@@ -99,7 +97,6 @@ export class CreateAccountComponent implements OnInit {
       activities: [null, Validators.required],
       abrangency: [null, Validators.required],
       targetValue: [null, Validators.required],
-      institutions: [null],
       acceptedTermsOfUse: [false, Validators.required],
       acceptedPrivacyPolicy: [false, Validators.required],
     });
@@ -210,14 +207,24 @@ export class CreateAccountComponent implements OnInit {
           name: this.userForm.controls['name'].value,
           lastName: this.userForm.controls['lastName'].value,
           email: this.userForm.controls['email'].value,
-          cpfCnpj: this.userForm.controls['cpf_cnpj'].value,
           password: this.userForm.controls['password'].value,
           state: this.userForm.controls['state'].value.id,
-          background: this.userForm.controls['background'].value,
         }
-
-        this.goToServiceData();
-
+        this.userService.createUser(this.userDto).subscribe((resp) => {
+          const initialState : any = {
+            title: 'Sucesso',
+            message: 'Usuario cadastrado'
+          };
+          let modalRef = this.modalService.show(NotificationModalComponent, {
+            class: 'modal-dialog modal-dialog-centered',
+            ignoreBackdropClick: true,
+            initialState
+          });
+          modalRef.content.onSubmit.subscribe(() => {
+            this.router.navigate(['/login']);
+            modalRef.hide();
+          })
+        })
       } else {
         console.log('error')
         this.toastService.error('Erro', 'O formulario precisa está válido para prosseguir com esse cadastro!');
