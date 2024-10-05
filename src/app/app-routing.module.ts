@@ -14,6 +14,7 @@ import { FirstAccessComponent } from './_pages/first-access/first-access.compone
 import { HomeComponent } from './_pages/home/home.component';
 import { LoginComponent } from './_pages/login/login.component';
 import { UserProfileComponent } from './_pages/users/user-profile/user-profile.component';
+import { PetCadastroComponent } from './pet-cadastro/pet-cadastro.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/recomendations', pathMatch: 'full' },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'password-recovery', component: PasswordRecoveryComponent},
   { path: 'password-recovery/:token', component: PasswordRecoveryComponent},
   { path: 'validate-email/:token', component: EmailValidationComponent},
+  { path: 'cadastro-pet', component: PetCadastroComponent, canActivate: [AuthGuard], data: {role:["ADMIN", "CLIENTE", "CONVIDADO",  "CONVIDADO",  "SISTEMA"]}},
   { path: 'search', component: SearchComponent, canActivate: [AuthGuard], data: {role:["ADMIN", "CLIENTE", "CONVIDADO",  "CONVIDADO",  "SISTEMA"]}},
   { path: 'details', component: DetailsComponent, canActivate: [AuthGuard], data: {role:["ADMIN", "CLIENTE", "CONVIDADO",  "SISTEMA"]}},
   { path: 'recomendations', component: RecomendationsComponent, canActivate: [AuthGuard], data: {role:["ADMIN", "CLIENTE", "CONVIDADO",  "SISTEMA"]}},

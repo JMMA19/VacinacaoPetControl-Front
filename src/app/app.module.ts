@@ -77,6 +77,7 @@ import { ActiviteService } from './_services/activite.service';
 import { InviteService } from './_services/invite.service';
 import { EditalService } from './_services/edital.service';
 import { UserService } from './_services/user.service';
+import { PetCadastroComponent } from './pet-cadastro/pet-cadastro.component';
 
 import localePt  from '@angular/common/locales/pt';
 import { DatePipe, registerLocaleData } from '@angular/common';
@@ -131,6 +132,7 @@ export const customCurrencyMaskConfig = {
     DetailsComponent,
     SearchFilterDropdownComponent,
     RecomendationsComponent,
+    PetCadastroComponent
   ],
   imports: [
     BrowserModule,
@@ -151,7 +153,7 @@ export const customCurrencyMaskConfig = {
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatFormFieldModule
+    MatFormFieldModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

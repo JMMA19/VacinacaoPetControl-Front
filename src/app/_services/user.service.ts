@@ -105,4 +105,9 @@ export class UserService {
     return this.http.get(url);
   }
 
+  createPet(body: any): Observable<any> {
+    return this.http.post(`${environment.apiUrl}/pet/`, body);
+  }
+
+
 }
