@@ -38,6 +38,7 @@ import { FirstAccessService } from './_services/first-access.service';
 import { LoaderService } from './_services/loader.service';
 import { PermissionService } from './_services/permission.service';
 import { ProfileService } from './_services/profile.service';
+import { PetService } from './_services/pet.service';
 import { SegmentService } from './_services/segment.service';
 import { ToastService } from './_services/toast.service';
 
@@ -173,6 +174,7 @@ export const customCurrencyMaskConfig = {
     FormBuilder,
     DeactivateGuard,
     ProfileService,
+    PetService,
     SegmentService,
     ImagekitService,
     RecomendationService,

@@ -38,7 +38,7 @@ export class LocationService {
     }));
   }
 
-  //////// new content for Capti /////
+  //////// new content for SEUpet /////
 
   getAll( filter: StateFilter, pageRequest: PageRequest ): Observable<any> {
     return this.http.get(`${environment.apiUrl}/location`, {
