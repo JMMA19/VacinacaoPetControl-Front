@@ -6,6 +6,8 @@ import { User } from 'src/app/_models/user';
 import { jwtDecode } from 'jwt-decode';
 
 import { environment } from 'src/environments/environment';
+import { PageRequest, petFiltro } from '../_interfaces';
+import { createParams } from '../_helpers/utils';
 
 @Injectable({
   providedIn: 'root'
@@ -116,5 +118,13 @@ export class AuthService {
       }
     });
   }
+
+  getAllPet(filter: petFiltro, pageRequest: PageRequest): Observable<any> {
+    return this.http.get(`${environment.apiUrl}/pet`, {
+      params: createParams([filter, pageRequest])
+    });
+  }
+
+ 
 
 }

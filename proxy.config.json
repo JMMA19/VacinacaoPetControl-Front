@@ -1,6 +1,6 @@
 {
     "/recomendationApiUrl": {
-        "target": "https://capti-ia.onrender.com",
+        "target": "https://SEUpet-ia.onrender.com",
         "pathRewrite": { "^/recomendationApiUrl": "" },
         "secure": false,
         "changeOrigin": true

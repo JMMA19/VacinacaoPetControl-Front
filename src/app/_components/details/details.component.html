@@ -1,96 +1,92 @@
-<app-loader></app-loader>
+<!-- <app-loader></app-loader> -->
 <div class="wrapper">
   <app-breadcrumb [pages]="breadcrumbPages"></app-breadcrumb>
   <div class="title">
-    <span class="dds__icons dds__chevron-left" (click)="router.navigate(['/search'])"></span>
+    <span class="dds__icons dds__chevron-left" (click)="router.navigate(['/recomendations'])"></span>
     <span>
-      Detalhes do edital
+      Cartão de vacina de {{petName}}
     </span>
   </div>
   <div class="container">
-    <div class="scroller" *ngIf="edital">
+    <div class="" *ngIf="edital">
       <div class="data-wrapper">  
-        <div class="header">
-          <div class="buttons">
-              <a [href]="edital.link" target="_blank">
-                <button class="linkButton">
-                  <div>
-                    <span class="icons_google material-symbols-outlined">
-                      link
-                    </span>
-                    <label>
-                      Acesse o edital
-                    </label>
-                  </div>
-                </button>
-              </a>
-              <button>
-                <div>
-                  <span class="icons_google material-symbols-outlined">
-                    bookmark
-                  </span>
-                  <label>
-                    Salvar
-                  </label>
-                </div>
-              </button>
-              <button>
-                <div>
-                  <span class="icons_google material-symbols-outlined">
-                    thumb_down
-                  </span>
-                  <label>
-                    Descartar
-                  </label>
-                </div>
-              </button>
-              <button>
-                <div>
-                  <span class="icons_google material-symbols-outlined">
-                    share 
-                  </span>
-                  <label>
-                    Compartilhar
-                  </label>
-                </div>
-              </button>
-          </div>
-          <div class="sub-header">
-            <div>
-              <span class="name">{{ edital.title }}</span>
+        <div class="responsive-table">
+          <div class="table-backgound">
+            <div class="row line-header">
+              <div class="col-4 user-name-label">
+                <span>Nome da vacina</span>
+              </div>
+              <div class="col-4 function-header">
+                <span>observações</span>
+              </div>
+              <div class="col-4">
+                <span>Date</span>
+              </div>
             </div>
-            <span class="offeredBy">Oferecido por: {{ edital.agency }}</span>
+            <div>
+              <div class="table-scroller">
+              <div class="table-content dark_row" *ngIf="hascreate">
+                <!-- <span>Adicionar nova vacina</span> -->
+                <form [formGroup]="vacForm">
+                  <div class="table-content">
+                    <div class="row">
+                      <div class="col-4 user-name">
+                        <div>
+                          <ng-select
+                            placeholder="Selecione a vacina"
+                            [items]="tiposVac"
+                            bindLabel="nome"
+                            bindValue="nome"
+                            [clearable]="false"
+                            [multiple]="false"
+                            formControlName="nome">
+                            </ng-select>
+                        </div>
+                      </div>
+                      <div class="col-4">
+                        <input  type="text" class="form-control" formControlName = "obs">
+                      </div>
+                      <div class="col-3">
+                        <div class="date">
+                          <mat-form-field>
+                              <mat-label>Data que foi vacinado</mat-label>
+                              <input matInput [matDatepicker]="picker3" formControlName = "data">
+                              <mat-datepicker-toggle matIconSuffix [for]="picker3"></mat-datepicker-toggle>
+                              <mat-datepicker #picker3></mat-datepicker>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="col-1">
+                        <button class="btn btn-success mb-1" (click)="salvarVac()" [disabled]="vacForm.invalid">salvar</button>
+                        <button class="btn btn-danger mt-1" (click)="resetForm()">cancelar</button>
+                      </div>
+                    </div>
+                  </div>
+                  
+                </form>
+              </div>
+              <div class="table-content2" *ngFor="let vac of edital;  let i = index">
+                <div class="table-content" [ngClass]="{'dark_row': i % 2 == 0}">
+                  <div class="row" [ngClass]="{'selected': i === selected} ">
+                    <div class="col-4 user-name">
+                      <div>
+                        <span>{{vac.tipo}}</span>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <span>{{vac.obs}}</span>
+                    </div>
+                    <div class="col-4">
+                      <span>{{vac.dataDeVacina | date: 'dd/MM/yyyy' }}</span>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="body">
-          <label class="subTitle" *ngIf="!edital.subTitle">{{ edital.subTitle }}</label>
-          <span>
-            Objetivo:
-          </span>
-          <label>{{ edital.objective }}</label>
-          <span>
-            Data de entrega das propostas:
-          </span>
-          <label>{{edital.submission}}</label>
-          <span>
-          Tematicas: 
-          </span>
-          <div class="tematics">
-              <label *ngFor="let t of edital.areaList" >{{ t }}</label>
-          </div>
-          <span>
-            Valor: 
-          </span>
-          <label>{{edital.financingValue}}</label>
-          <span>
-            Maturidade tecnológica (TRL): 
-          </span>
-          <label>{{ edital.maturityLevel ?? 'Não encontrado' }}</label>
-          <span>
-            Elegibilidade: 
-          </span>
-          <label>{{ edital.elegibility }}</label>
-      </div>
-    </div>
+        <button class="btn btn-info mt-3" (click)="create()" *ngIf="!hascreate">Adicionar nova vacina</button>
   </div> 
 </div>

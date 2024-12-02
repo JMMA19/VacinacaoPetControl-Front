@@ -11,11 +11,11 @@
     flex-direction: column;
 }
 .container {
-    padding: 0% !important;
+    padding: 5% !important;
+    overflow: auto;
     
 }
 .wrapper {
-    min-height: 100%;
 }
 .right-side {
     background-color: #f6f2dd;
@@ -63,6 +63,11 @@
     .area-List-label {
         padding-left: 3% !important;
     }
+}
+
+.card {
+    background-color: #f6f2dd;
+    margin: 10px 10px;
 }
 
 
@@ -131,7 +136,7 @@
         }
     }
     .row {
-        align-items: center;
+        align-items: center !important;
         padding: 1%;
     }
     .col-1, .col-2, .col-3 {
@@ -204,13 +209,26 @@
         }
     }
 }
-
+.row {
+    justify-content: center;
+}
+.botaoPlus {
+    cursor: pointer;
+    min-height: 408px;
+    min-width: 288px;
+    color: white;
+    font-size: 9rem;
+    display: flex;
+    background-color: #4ec7ff;
+    justify-content: center;
+    align-items: center;
+}
 .notifications-space {
     min-width: 85%;
     max-height: 50%;
     .row {
         padding: 6% 0%;
-        align-items: flex-end;
+        justify-content: center !important;
     }
     label {
         font-weight: bold;

@@ -4,7 +4,7 @@ import { HttpClient,} from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { createParams } from '../_helpers/utils';
-import { EditalFilter, PageRequest } from '../_interfaces';
+import { EditalFilter, PageRequest, petFiltro } from '../_interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -62,4 +62,10 @@ export class EditalService {
     return this.http.put(url, null)
   } */
 
+    getAllPetvacinas(filter: petFiltro, pageRequest: PageRequest): Observable<any> {
+      return this.http.get(`${environment.apiUrl}/vacina`, {
+        params: createParams([filter, pageRequest])
+      });
+    }
+  
 }
