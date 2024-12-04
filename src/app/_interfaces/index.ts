@@ -29,6 +29,17 @@ export interface UserFilter {
   order?: string;
 }
 
+export interface petFiltro {
+  nome?: string;
+  id?: any;
+  raca?: any;
+  tipo?: any;
+  idade?: any;
+  tutor?: any;
+  by?: string;
+  order?: string;
+}
+
 export interface SegmentFilter {
   name?: string;
   by?: string;

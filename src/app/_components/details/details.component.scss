@@ -119,3 +119,109 @@
 .data-wrapper {
     padding: 1%;
 }
+
+.table-content-no-data {
+    padding: 1% 9%;
+    display: flex;
+    justify-content: center;
+    span {
+        font-size: 1.2rem;
+        color: #818181;
+        font-weight: bold;
+    }
+}
+.line-header {
+    font-weight: 500;
+    padding: 2% 0% .3%;
+    margin-right: 3px;
+    .user-name-label {
+        padding-left: 3%;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        user-select: none;
+    }
+    span {
+        color: #818181;
+        font-size: 1rem;
+    }
+}
+
+.function-header .buttons-div {
+    padding-left: 2px;
+}
+
+
+.table-content {
+    margin: 0%;
+    font-weight: 600;
+    font-size: 1rem;
+    .area-List {
+        flex-direction: column;
+        span {
+            background-color: #faf3cb;
+            padding: 1%;
+            margin: 1%;
+            text-align: center;
+            border-radius: 15px;
+        }
+    }
+    .row {
+        align-items: center;
+        padding: 1% 30px;
+    }
+    .col-2, .col-3 {
+        display: flex;
+    }
+    .col-1 {
+        display: flex;
+        flex-direction: column;
+        .btn {
+            height: 30px !important;
+        }
+    }
+}
+
+.selected {
+    background-color: #fbf6e0;
+}
+.dark_row {
+    background-color: #f8f8f8;
+}
+
+.table-scroller {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 29rem;
+}
+
+.table-backgound {
+    background-color: white;
+    border-radius: 20px;
+    min-width: 1329px;
+}
+
+
+@media (min-height: 600px) {
+    .table-scroller {
+        height: 13rem;
+    }
+}
+
+@media (min-height: 735px) {
+    .table-scroller {
+        height: 19rem;
+    }
+}
+
+@media (min-height: 800px) {
+    .table-scroller {
+        height: 25rem;
+    }
+}
+
+@media (min-height: 900px) {
+    .table-scroller {
+        height: 30rem;
+    }
+}

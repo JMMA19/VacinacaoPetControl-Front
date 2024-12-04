@@ -1,116 +1,41 @@
 
 <div class="wrapper">
-    <div class="title">
-      <span>
-      Painel de Recomendações
+  <div class="title">
+    <span>
+      Gerencie seus pets
     </span>
     <label>
       Bem vindo de volta {{user.user.name}}
     </label>
-    </div>
-    <div class="container">
-        <div class="wrapper row">  
-            <div class="left-side col-9">
-                <div class="atualizations row">
-                  <div class="atualizations-placeholder col-12">
-                    <img src="assets/images/avisos.png"> 
-                  </div>
-                </div>
-                <div class="preview row">
-                    <div class="row preview-title">
-                        <div class="col-8">
-                            Lista de editais ideais para você
-                        </div>
-                        <div class="col-4">
-                            <a [routerLink]="['/search']" >
-                            Ver todos  <div class="dds__icons dds__chevron-right"></div>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="row row-header">
-                      <div class="col-3">
-                        <span>Nome</span>
-                      </div>
-                      <div class="col-2">
-                        <span>Início</span>
-                      </div>
-                      <div class="col-2 affinity-field-label">
-                        <span>Afinidade</span>
-                      </div>
-                      <div class="col-3 area-List-label">
-                        <span>Área</span>
-                      </div>
-                      <div class="col-2 favorite-check">
-                        <span>Favoritar</span>
-                      </div>
-                    </div>                         
-                         
-                    <div class="table-content" *ngFor="let edital of editais;  let i = index">
-                      <div class="row">
-                        <div class="col-3 edital-name">
-                          <label class="dds__icons dds__server-rack-support"></label>
-                          <div>
-                            <span data-toggle="tooltip" data-placement="bottom" [title]="edital.ds_titulo">
-                              {{ reduceTitle(edital.ds_titulo)}}
-                            </span>
-                            <span class="agency">{{ edital.ds_agency }}</span>
-                          </div>
-                        </div>
-                        <div class="col-2">
-                          <span>{{ !edital.dt_submission ? 'Não encontrado' : edital.dt_submission | date:'dd/MM/yyyy'}}</span>
-                        </div>
-                        <div class="col-2 affinity-field">
-                          <span>{{ edital.ds_Afinidade ??  '10.00' }}</span>
-                        </div>
-                        <div class="col-3 area-List">
-                          <span *ngFor="let item of edital.ds_areas">{{ item }}</span>
-                        </div>
-                        <div class="col-2 favorite-check">
-                          <span class="material-symbols-outlined">bookmark</span>
-                        </div>
-                      </div>
-                    </div>
-                </div>
-            </div>
-            <div class="right-side col-3">
-              <div class="user-space">
-                <div class="user-img">
-                  <img src="{{user.user.profileImageUrl}}">
-                </div>
-                <div class="user-labels">
-                  <label>{{user.user.name}} {{user.user.lastName}}</label>
-                  <span> {{user.user.role}} </span>
-                </div>
-              </div>
-              <div class="notifications-space">
-                <div class="row">
-                  <div class="col-10">
-                    <label>Lembretes</label>
-                  </div>
-                  <div class="col-2">
-                    <span class="dds__icons dds__alarm-bell"></span>
-                  </div>
-                </div>
-                <div class="notifications-bar">
-                  <div class="notification-placeholder">
-                    <img src="assets/images/notifications.png"> 
-                  </div>
-                </div>
-                <!-- <div class="upgrade-button-wrapper">
-                  <div class="upgrade-button">
-                    <span class="material-symbols-outlined premium">
-                      workspace_premium
-                    </span>
-                    <div class="label"> 
-                      Upgrade to Premium
-                      <div class="dds__icons dds__chevron-right"></div>
-                    </div>
-                  </div>
-                </div> -->
-              </div>
-            </div>
-        </div>
-    </div> 
   </div>
+  <div class="container">
+    
+    <div class="wrapper row"> 
+      <div class="card col-2" style="width: 18rem;" *ngFor="let pet of pets">
+        <label>
+          {{pet.tipo}}
+        </label>
+      <img [src]="'../../../../../assets/images/'+ pet.tipo + '.png'" class="card-img-top">
+      <div class="card-body">
+        <span>
+         Nome: {{pet.nome}}
+        </span>
+        <span>
+          Raça: {{pet.raca}}
+         </span>
+         <span>
+          Idade: {{pet.idade}}
+         </span>
+        <div class="butons">
+          <button class="btn btn-info" (click)="goVacinacaoCartao(pet.id, pet.nome)">
+            ver cartão de vacina
+          </button>
+        </div>
+      </div>
+      
+  </div> 
+  <div class="card col-2 botaoPlus" style="width: 18rem;" (click)="router.navigate(['/cadastro-pet'])">
+    +
+  </div> 
+</div>
   
