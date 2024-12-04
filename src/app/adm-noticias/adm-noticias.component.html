@@ -1,0 +1,40 @@
+<div class="wrapper">
+  <div class="title">
+    <h2>Administração de Notícias</h2>
+  </div>
+  <div class="container">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Nome do Usuário</th>
+          <th>Título</th>
+          <th>Mensagem</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let noticia of noticias; let i = index">
+          <td>{{ noticia.nomeUsuario }}</td>
+          <td>{{ noticia.titulo }}</td>
+          <td>{{ noticia.mensagem }}</td>
+          <td class="text-center">
+            <button
+              class="btn-advance btn-sm"
+              (click)="validarMensagem(i)"
+              title="Validar Mensagem"
+            >
+              ✔
+            </button>
+            <button
+              class="btn-advance-2 btn-sm"
+              (click)="excluirMensagem(i)"
+              title="Excluir Mensagem"
+            >
+              ✖
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
