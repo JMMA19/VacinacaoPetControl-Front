@@ -1,0 +1,83 @@
+.title {
+  margin-bottom: 3rem;
+  span {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  label {
+    color: #929292;
+    padding: 1% 0%;
+  }
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  padding: 30px 28px 31px !important;
+  a {
+    cursor: pointer;
+  }
+}
+.formBody {
+  background-color: #fff;
+  padding: 6rem;
+  border-radius: 27px;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+}
+
+.btn-advance {
+  border: none;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 6px !important;
+  background-color: #43d19e;
+  display: flex;
+  padding: 1%;
+  min-height: 40px;
+  min-width: 7rem;
+  margin: 2% 0%;
+  justify-content: center;
+  align-items: center;
+}
+.btn-advance-2 {
+  border: none;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 6px !important;
+  background-color: #e00909;
+  display: flex;
+  padding: 1%;
+  min-height: 40px;
+  min-width: 7rem;
+  margin: 2% 0%;
+  justify-content: center;
+  align-items: center;
+}
+.mensagem-coluna {
+  width: 40%; /* Ajuste para o tamanho desejado */
+  word-wrap: break-word; /* Quebra a mensagem se for longa */
+  white-space: normal; /* Permite quebra de linha */
+}
+th:nth-child(1),
+td:nth-child(1) {
+  width: 20%; /* Nome do usuário */
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+  width: 20%; /* Título */
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+  width: 40%; /* Mensagem */
+}
+
+th:nth-child(4),
+td:nth-child(4) {
+  width: 20%; /* Ações */
+}

@@ -1,41 +1,46 @@
-
 <div class="wrapper">
   <div class="title">
-    <span>
-      Gerencie seus pets
-    </span>
-    <label>
-      Bem vindo de volta {{user.user.name}}
-    </label>
+    <span> Gerencie seus pets </span>
+    <label> Bem vindo de volta {{ user.user.name }} </label>
   </div>
   <div class="container">
-    
-    <div class="wrapper row"> 
-      <div class="card col-2" style="width: 18rem;" *ngFor="let pet of pets">
+    <div class="wrapper row">
+      <div class="card col-2" style="width: 18rem" *ngFor="let pet of pets">
         <label>
-          {{pet.tipo}}
+          {{ pet.tipo }}
         </label>
-      <img [src]="'../../../../../assets/images/'+ pet.tipo + '.png'" class="card-img-top">
-      <div class="card-body">
-        <span>
-         Nome: {{pet.nome}}
-        </span>
-        <span>
-          Raça: {{pet.raca}}
-         </span>
-         <span>
-          Idade: {{pet.idade}}
-         </span>
-        <div class="butons">
-          <button class="btn btn-info" (click)="goVacinacaoCartao(pet.id, pet.nome)">
-            ver cartão de vacina
-          </button>
+        <img
+          [src]="'../../../../../assets/images/' + pet.tipo + '.png'"
+          class="card-img-top"
+        />
+        <div class="card-body">
+          <span> Nome: {{ pet.nome }} </span>
+          <span> Raça: {{ pet.raca }} </span>
+          <span> Idade: {{ pet.idade }} </span>
+          <div class="butons">
+            <button
+              class="btn btn-info"
+              (click)="goVacinacaoCartao(pet.id, pet.nome)"
+            >
+              ver cartão de vacina
+            </button>
+            <button
+              class="btn-advance-2 btn-sm"
+              (click)="confirmarExclusao(i)"
+              title="Excluir Mensagem"
+            >
+              ✖
+            </button>
+          </div>
         </div>
       </div>
-      
-  </div> 
-  <div class="card col-2 botaoPlus" style="width: 18rem;" (click)="router.navigate(['/cadastro-pet'])">
-    +
-  </div> 
+      <div
+        class="card col-2 botaoPlus"
+        style="width: 18rem"
+        (click)="router.navigate(['/cadastro-pet'])"
+      >
+        +
+      </div>
+    </div>
+  </div>
 </div>
-  
