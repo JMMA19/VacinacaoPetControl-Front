@@ -9,10 +9,9 @@ import { AuthService } from '../_services/auth.service';
 @Component({
   selector: 'app-pet-cadastro',
   templateUrl: './pet-cadastro.component.html',
-  styleUrl: './pet-cadastro.component.scss'
+  styleUrl: './pet-cadastro.component.scss',
 })
 export class PetCadastroComponent {
-
   public petForm = null;
   caes = [
     { value: 'Vira-lata' },
@@ -30,7 +29,7 @@ export class PetCadastroComponent {
     { value: 'Chihuahua' },
     { value: 'Cocker Spaniel' },
     { value: 'Schnauzer' },
-    { value: 'Akita' }
+    { value: 'Akita' },
   ];
 
   gatos = [
@@ -49,23 +48,18 @@ export class PetCadastroComponent {
     { value: 'Russian Blue' },
     { value: 'Norwegian Forest' },
     { value: 'Oriental Shorthair' },
-    { value: 'Siberian' }
+    { value: 'Siberian' },
   ];
 
-  tipos = [
-    { value: 'Cachorro' },
-    { value: 'Gato' }
-  ];
+  tipos = [{ value: 'Cachorro' }, { value: 'Gato' }];
 
-
-  
   constructor(
     private petService: PetService,
     private formBuilder: FormBuilder,
     private toastService: ToastService,
     private router: Router,
-    public user: AuthService,
-  ) { }
+    public user: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.petForm = this.formBuilder.group({
@@ -73,9 +67,9 @@ export class PetCadastroComponent {
       tipo: [null, Validators.required],
       raca: [null, Validators.required],
       idade: [null, Validators.required],
-      tutor: [null]
+      tutor: [null],
     });
-    this.petForm.get('raca').disable()
+    this.petForm.get('raca').disable();
   }
 
   savePet() {
@@ -84,17 +78,19 @@ export class PetCadastroComponent {
       this.petService.save(this.petForm.value).subscribe((x) => {
         this.toastService.success('Parabens', 'Seu pet foi cadastrado !');
         this.petForm.reset();
-        this.petForm.get('raca').disable()
-      })
+        this.petForm.get('raca').disable();
+      });
     } else {
-      this.toastService.error('Formulario invalido ', 'Confira todos os campos do formulario e tente novamente !');
+      this.toastService.error(
+        'Formulario invalido ',
+        'Confira todos os campos do formulario e tente novamente !'
+      );
     }
   }
 
   back() {
     this.router.navigate(['/recomendations']);
   }
-
 
   resetRaca(value) {
     if (value.value == this.petForm.get('tipo').value) {

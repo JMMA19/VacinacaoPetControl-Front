@@ -1,0 +1,38 @@
+<div class="container mt-5">
+  <div class="title text-center mb-4">
+    <h2>Cadastro de Notícias</h2>
+  </div>
+  <form [formGroup]="noticiasForm" (ngSubmit)="savenoticias()">
+    <div class="row">
+      <div class="form-group col-6">
+        <label for="titulo">Título</label>
+        <input
+          type="text"
+          id="titulo"
+          formControlName="titulo"
+          class="form-control"
+          placeholder="Digite o título da notícia"
+          required
+        />
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="form-group col-12">
+        <label for="mensagem">Mensagem</label>
+        <textarea
+          id="mensagem"
+          formControlName="mensagem"
+          class="form-control"
+          rows="8"
+          placeholder="Digite a mensagem da notícia"
+          required
+        ></textarea>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="form-group col-12 text-center">
+        <button type="submit" class="btn-advance">Salvar</button>
+      </div>
+    </div>
+  </form>
+</div>

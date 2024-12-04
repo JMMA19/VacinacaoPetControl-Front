@@ -47,14 +47,17 @@ import { LoaderComponent } from './_components/loader/loader.component';
 import { UserListComponent } from './_components/users/user-list/user-list.component';
 import { FileCardComponent } from './_components/file-card/file-card.component';
 
-import { NgxCurrencyInputMode, provideEnvironmentNgxCurrency } from 'ngx-currency';
+import {
+  NgxCurrencyInputMode,
+  provideEnvironmentNgxCurrency,
+} from 'ngx-currency';
 
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { ValidBirthdayDirective } from "src/app/_helpers/birthday-validator.directive";
-import { NotEmptyDirective } from "src/app/_helpers/not-empty-validator.directive";
+import { ValidBirthdayDirective } from 'src/app/_helpers/birthday-validator.directive';
+import { NotEmptyDirective } from 'src/app/_helpers/not-empty-validator.directive';
 import { InviteModalComponent } from './_components/invite-modal/invite-modal.component';
 import { ConfirmModal } from './_components/confirm-modal/confirm-modal.component';
 import { DetailsComponent } from './_components/details/details.component';
@@ -66,7 +69,7 @@ import { RecomendationsComponent } from './_components/recomendations/recomendat
 import { SearchFilterDropdownComponent } from './_components/search-filter-dropdown/search-filter-dropdown.component';
 import { SearchComponent } from './_components/search/search.component';
 import { TermsOfUseModalComponent } from './_components/terms-of-use-modal/terms-of-use-modal.component';
-import { CreateUserFormComponent } from "./_components/users/create-user-form/create-user-form.component";
+import { CreateUserFormComponent } from './_components/users/create-user-form/create-user-form.component';
 import { UserPermissionsComponent } from './_components/users/user-permissions/user-permissions.component';
 import { UserProfileFormComponent } from './_components/users/user-profile-form/user-profile-form.component';
 import { DeactivateGuard } from './_guards/deactivate.guard';
@@ -79,24 +82,26 @@ import { InviteService } from './_services/invite.service';
 import { EditalService } from './_services/edital.service';
 import { UserService } from './_services/user.service';
 import { PetCadastroComponent } from './pet-cadastro/pet-cadastro.component';
+import { PetNoticiasComponent } from './pet-noticias/pet-noticias.component';
+import { AdmNoticiasComponent } from './adm-noticias/adm-noticias.component';
 
-import localePt  from '@angular/common/locales/pt';
+import localePt from '@angular/common/locales/pt';
 import { DatePipe, registerLocaleData } from '@angular/common';
 
 registerLocaleData(localePt, 'pt');
 export const customCurrencyMaskConfig = {
-  align: "right",
+  align: 'right',
   allowNegative: true,
   allowZero: true,
-  decimal: ",",
+  decimal: ',',
   precision: 2,
-  prefix: "R$ ",
-  suffix: "",
-  thousands: ".",
+  prefix: 'R$ ',
+  suffix: '',
+  thousands: '.',
   nullable: true,
   min: null,
   max: null,
-  inputMode: NgxCurrencyInputMode.Financial
+  inputMode: NgxCurrencyInputMode.Financial,
 };
 @NgModule({
   declarations: [
@@ -133,7 +138,9 @@ export const customCurrencyMaskConfig = {
     DetailsComponent,
     SearchFilterDropdownComponent,
     RecomendationsComponent,
-    PetCadastroComponent
+    PetCadastroComponent,
+    PetNoticiasComponent,
+    AdmNoticiasComponent,
   ],
   imports: [
     BrowserModule,
@@ -181,8 +188,8 @@ export const customCurrencyMaskConfig = {
     PermissionService,
     provideNgxMask(),
     MatDatepickerModule,
-    { provide: Window, useValue: window }
+    { provide: Window, useValue: window },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
